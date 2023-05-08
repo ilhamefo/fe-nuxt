@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  nuxt3:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: pengki
+    ports:
+      - 3099:3000
+    container_name: nuxt_container
