@@ -23,7 +23,10 @@ export const useAxiosInstance = () => {
           .get(BACKEND_URL + "sanctum/csrf-cookie", {
             withCredentials: true,
           })
-          .then((res) => {});
+          .then((res) => {})
+          .finally(() => {
+            
+          });
       }
 
       if (token) {
