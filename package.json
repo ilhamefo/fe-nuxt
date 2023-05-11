@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "build": "nuxt build",
-    "dev": "nodemon -q --watch actions/* --exec nuxt dev --port 3080",
+    "dev": "nodemon -q --watch actions/* --exec nuxt dev --port 3081",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"

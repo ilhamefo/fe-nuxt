@@ -1,4 +1,3 @@
-import axiosInstance from "@/actions/axios";
 import axios, { AxiosResponse, CancelTokenSource } from "axios";
 import {
   ApiResponse,
@@ -18,6 +17,7 @@ import Cookies from "universal-cookie";
 const cookies = new Cookies();
 
 export async function doLogin(body: LoginRequest) {
+  const axiosInstance = useAxiosInstance()
   const router = useRouter();
   const state = useIndexStore();
 
@@ -71,6 +71,8 @@ export async function doLogin(body: LoginRequest) {
 }
 
 export async function fetchUserData(): Promise<UserData> {
+  const axiosInstance = useAxiosInstance()
+
   const response: AxiosResponse<UserData> = await axiosInstance.get(
     "/api/user"
   );
@@ -79,6 +81,8 @@ export async function fetchUserData(): Promise<UserData> {
 }
 
 export async function fetchUserLanding(): Promise<UserLanding> {
+  const axiosInstance = useAxiosInstance()
+
   const response: AxiosResponse<UserLanding> = await axiosInstance.get(
     "/api/user/landing"
   );
@@ -86,6 +90,8 @@ export async function fetchUserLanding(): Promise<UserLanding> {
 }
 
 export async function fetchGenders(): Promise<GenderModel[]> {
+  const axiosInstance = useAxiosInstance()
+
   const response: AxiosResponse<GenderResponse> = await axiosInstance.get(
     "/api/gender"
   );
@@ -93,6 +99,8 @@ export async function fetchGenders(): Promise<GenderModel[]> {
 }
 
 export async function fetchOccupations(): Promise<ApiResponse> {
+  const axiosInstance = useAxiosInstance()
+
   const response: AxiosResponse<ApiResponse> = await axiosInstance.get(
     "/api/occupations"
   );
@@ -100,6 +108,8 @@ export async function fetchOccupations(): Promise<ApiResponse> {
 }
 
 export async function fetchLineOfBusiness(): Promise<ApiResponse> {
+  const axiosInstance = useAxiosInstance()
+
   const response: AxiosResponse<ApiResponse> = await axiosInstance.get(
     "/api/line-of-business"
   );
@@ -107,6 +117,8 @@ export async function fetchLineOfBusiness(): Promise<ApiResponse> {
 }
 
 export async function fetchJobTitles(): Promise<ApiResponse> {
+  const axiosInstance = useAxiosInstance()
+
   const response: AxiosResponse<ApiResponse> = await axiosInstance.get(
     "/api/job-titles"
   );
@@ -114,6 +126,8 @@ export async function fetchJobTitles(): Promise<ApiResponse> {
 }
 
 export async function fetchSourceOfFund(): Promise<ApiResponse> {
+  const axiosInstance = useAxiosInstance()
+
   const response: AxiosResponse<ApiResponse> = await axiosInstance.get(
     "/api/source-of-fund"
   );
@@ -121,6 +135,8 @@ export async function fetchSourceOfFund(): Promise<ApiResponse> {
 }
 
 export async function fetchIncome(): Promise<ApiResponse> {
+  const axiosInstance = useAxiosInstance()
+
   const response: AxiosResponse<ApiResponse> = await axiosInstance.get(
     "/api/incomes"
   );
@@ -153,6 +169,7 @@ export function MaskNPWP(input: string): string {
 }
 
 export async function submitPersonalData(data: UserData): Promise<any> {
+  const axiosInstance = useAxiosInstance()
   const response: AxiosResponse<any> = await axiosInstance.put(
     "/api/user/personal-data",
     data
@@ -162,6 +179,7 @@ export async function submitPersonalData(data: UserData): Promise<any> {
 }
 
 export async function submitEmployment(data: EmploymentPayload): Promise<any> {
+  const axiosInstance = useAxiosInstance()
   const response: AxiosResponse<any> = await axiosInstance.put(
     "/api/user/employment",
     data
@@ -173,6 +191,7 @@ export async function submitEmployment(data: EmploymentPayload): Promise<any> {
 export async function submitHomeAddress(
   data: HomeAddressPayload
 ): Promise<any> {
+  const axiosInstance = useAxiosInstance()
   const response: AxiosResponse<any> = await axiosInstance.put(
     "/api/user/home-address",
     data
@@ -191,6 +210,7 @@ export async function searchSubdistrict(data: string): Promise<ApiResponse> {
   const cancelToken = axios.CancelToken;
   source = cancelToken.source();
 
+  const axiosInstance = useAxiosInstance()
   const response: AxiosResponse<ApiResponse> = await axiosInstance.get(
     "/api/user/search-subdistrict/" + data,
     { cancelToken: source.token }

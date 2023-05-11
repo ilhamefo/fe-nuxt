@@ -1,11 +1,14 @@
-version: '3'
-
+version: '3.5'
 services:
   nuxt3:
     build: 
       context: .
       dockerfile: Dockerfile
     image: pengki
-    ports:
-      - 3099:3000
-    container_name: nuxt_container
+    container_name: nuxt3
+    networks:
+      - app-network
+networks:
+  app-network:
+    name: efo_networks
+    driver: bridge
